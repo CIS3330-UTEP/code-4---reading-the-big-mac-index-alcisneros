@@ -8,15 +8,15 @@ country_code= "SWE"
 def get_big_mac_price_by_year(year,country_code):
     get_big_mac_price_by_year =f"((date >= '{year}-01-01' and date <= '{year}-12-31') and iso_a3 == '{country_code}')"
     df_result_year = df.query(get_big_mac_price_by_year)
-    price_by_year_mean =f"{df_result_year['dollar_price'].mean()}"
-    price_by_year_mean_round = round(price_by_year_mean,2)
+    # price_by_year_mean =f"{df_result_year['dollar_price'].mean()}"
+    price_by_year_mean_round = round(df_result_year['dollar_price'].mean(),2)
     return price_by_year_mean_round
     
 def get_big_mac_price_by_country(country_code):
     get_big_mac_price_by_country = f"(iso_a3 == '{country_code}')"
     df_result_country = df.query(get_big_mac_price_by_country)
-    price_by_country_mean = f"{df_result_country['dollar_price'].mean()}"
-    price_by_country_mean_round = round(price_by_country_mean,2)
+    # price_by_country_mean = f"{df_result_country['dollar_price'].mean()}"
+    price_by_country_mean_round = round(df_result_country['dollar_price'].mean(),2)
     return price_by_country_mean_round
     
 def get_the_cheapest_big_mac_price_by_year(year):
