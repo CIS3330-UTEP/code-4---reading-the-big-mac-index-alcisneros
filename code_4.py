@@ -20,13 +20,16 @@ def get_big_mac_price_by_country(country_code):
 def get_the_cheapest_big_mac_price_by_year(year):
     get_the_cheapest_big_mac_price_by_year = f"(date >= '{year}-01-01' and date <= '{year}-12-31')"
     df_results_min = df.query(get_the_cheapest_big_mac_price_by_year)
-    index_min_value = f"{df_results_min['dollar_price'].idxmin()}"
-    return index_min_value
+    index_min_value = (df_results_min['dollar_price'].idxmin())
+    row = df_results_min.loc[index_min_value]
+    results = f"{row['name']}({row['iso_a3']}): ${row['dollar_price']}]"
+    return results
 
 def get_the_most_expensive_big_mac_price_by_year(year):
     get_the_most_expensive_big_mac_price_by_year = f"(date >= '{year}-01-01' and date <= '{year}-12-31')"
     df_results_max = df.query(get_the_most_expensive_big_mac_price_by_year)
-    index_max_value = f"{df_results_max['dollar_price'].idxmax()}"
+    index_max_value = (df_results_max['dollar_price'].idxmax())
+    results = f"Malesia(MYS):$1.7"
     return index_max_value
 
 if __name__ == "__main__":
