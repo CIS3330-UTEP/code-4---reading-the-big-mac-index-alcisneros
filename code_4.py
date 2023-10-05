@@ -22,7 +22,7 @@ def get_the_cheapest_big_mac_price_by_year(year):
     df_results_min = df.query(get_the_cheapest_big_mac_price_by_year)
     index_min_value = (df_results_min['dollar_price'].idxmin())
     row = df_results_min.loc[index_min_value]
-    results = f"{row['name']}({row['iso_a3']}): ${row['dollar_price']}]"
+    results = f"{row['name']}({row['iso_a3']}): ${round(row['dollar_price'], 2)}]"
     return results
 
 def get_the_most_expensive_big_mac_price_by_year(year):
