@@ -29,8 +29,10 @@ def get_the_most_expensive_big_mac_price_by_year(year):
     get_the_most_expensive_big_mac_price_by_year = f"(date >= '{year}-01-01' and date <= '{year}-12-31')"
     df_results_max = df.query(get_the_most_expensive_big_mac_price_by_year)
     index_max_value = (df_results_max['dollar_price'].idxmax())
-    results = f"Malesia(MYS):$1.7"
-    return index_max_value
+    row = df_results_max.loc[index_max_value]
+    results = f"{row['name']}({row['iso_a3']}): ${round(row['dollar_price'], 2)}"
+    return results
+
 
 if __name__ == "__main__":
     result_a = get_big_mac_price_by_year(year, country_code)
